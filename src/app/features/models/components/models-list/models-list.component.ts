@@ -21,6 +21,7 @@ import { ModelListItemDto } from '../../models/model-list-item-dto';
 })
 export class ModelsListComponent implements OnInit, OnChanges {
   @Input() brandId: number | null = null; //homel-page.html'den alıyor
+  @Input() searchBrandName: string | null = null;
 
   public list: ModelListItemDto[] = [];
   //@Input() modelList:ModelListItemDto[] = [];
@@ -40,10 +41,13 @@ export class ModelsListComponent implements OnInit, OnChanges {
     if (changes['brandId'] && changes['brandId'].currentValue !== changes['brandId'].previousValue) {
       this.getList();
     }
+    if (changes['searchBrandName'] && changes['searchBrandName'].currentValue !== changes['searchBrandName'].previousValue) {
+      this.getList();
+    }
   }
 
   private getList() {
-    this.modelsApiService.getList(this.brandId).subscribe((response) => {
+    this.modelsApiService.getList(this.brandId, this.searchBrandName).subscribe((response) => {
       this.list = response;
       this.change.markForCheck();
     });

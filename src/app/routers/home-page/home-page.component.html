@@ -12,12 +12,19 @@ importla yaparsak bu şekilde, pathler app.routers ile yaparsak alttaki gibi yaz
     alt="Image"
     class="w-25 mx-auto d-block"
   />
+
 </div>
 <div class="row">
   <div class="col">
     <app-brands-list (selectBrand)="onBrandSelect($event)"></app-brands-list>
   </div>
+
   <div class="col">
-    <app-models-list [brandId]="selectedBrandId"></app-models-list>
+    Search: <input type="text" [(ngModel)]="searchBrandName" />
+    <app-models-list
+      [brandId]="selectedBrandId"
+      [searchBrandName]="searchBrandName"
+    >
+    </app-models-list>
   </div>
 </div>
