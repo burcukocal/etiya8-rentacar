@@ -1,6 +1,6 @@
-<ul class="list-group text-center w-75">
+<!--<ul class="list-group text-center w-75">
   <h3>Brands</h3>
-  <!-- < Angular 17 -->
+
   <ng-container>
     <li *ngFor="let item of list"
     (click)="onSelectedBrand(item.id)"
@@ -10,5 +10,12 @@
     </li>
   </ng-container>
 
-  </ul>
+  </ul> -->
+<div class="container">
+  <p (click)="onBrandClick(null)">All</p>
 
+  <h3>Brands</h3>
+  @for (item of list; track $index) {
+  <p (click)="onBrandClick(item.id)">{{ item.name }}</p>
+  }
+</div>

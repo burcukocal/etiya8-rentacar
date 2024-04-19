@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ModelListItemDto } from '../models/model-list-item-dto';
 
 @Injectable({
@@ -9,19 +9,16 @@ import { ModelListItemDto } from '../models/model-list-item-dto';
 export class ModelsApiService {
   constructor(private http: HttpClient) {}
 
-  getList(): Observable<ModelListItemDto[]> {
-    return this.http.get<ModelListItemDto[]>('http://localhost:3000/models');
+  getList(brandId: number | null = null): Observable<ModelListItemDto[]> {
+    const requestQueryParams : any = {}
+    if (brandId !== null) requestQueryParams.brandId = brandId;
+
+    return this.http.get<ModelListItemDto[]>('http://localhost:3000/models',
+      {
+        params: requestQueryParams
+      });
     // .subscribe((httpResponse) => {
     //   return httpResponse;
     // });
-  }
-
-  getModelsByBrand(brandId: number): Observable<ModelListItemDto[]> {
-    return this.http.get<ModelListItemDto[]>('http://localhost:3000/models')
-    .pipe(
-      map(models =>
-        models.filter(model => model.brand.id === brandId)
-      )
-    );
   }
 }
