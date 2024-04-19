@@ -21,10 +21,12 @@ importla yaparsak bu şekilde, pathler app.routers ile yaparsak alttaki gibi yaz
 
   <div class="col">
     Search: <input type="text" [(ngModel)]="searchBrandName" />
+    <button class="mx-2" type="submit">Submit</button>
     <app-models-list
       [brandId]="selectedBrandId"
       [searchBrandName]="searchBrandName"
     >
+
     </app-models-list>
   </div>
 </div>

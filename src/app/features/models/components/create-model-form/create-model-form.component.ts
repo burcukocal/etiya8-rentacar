@@ -21,12 +21,12 @@ export class CreateModelFormComponent {
     name: [],
     modelYear: [],
     imageUrl: [],
-    dailyPrice: []
+    dailyPrice: [],
   });
 
   constructor(
     private fb: FormBuilder,
-    private modelsApiService: ModelsApiService
+    private modelsApiService: ModelsApiService,
   ) {}
 
 
@@ -36,7 +36,8 @@ export class CreateModelFormComponent {
       name: this.form.value.name,
       modelYear: this.form.value.modelYear,
       imageUrl: this.form.value.imageUrl,
-      dailyPrice: this.form.value.dailyPrice
+      dailyPrice: this.form.value.dailyPrice,
+
     };
     this.modelsApiService.postBrand(request).subscribe({
       next: (response) => {

@@ -1,3 +1,4 @@
+
 export interface PostModelRequest {
   brandId:     number;
   name:        string;
@@ -5,3 +6,4 @@ export interface PostModelRequest {
   imageUrl:    string;
   dailyPrice:  number;
 }
+
