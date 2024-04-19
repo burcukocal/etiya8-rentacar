@@ -6,8 +6,9 @@ import {
   EventEmitter, OnInit,
   Output
 } from '@angular/core';
-import { BrandListItemDto } from '../../../models/brand-list-item-dto';
-import { BrandsApiService } from '../../../services/brandsApi.service';
+import { BrandsApiService } from '../../services/brandsApi.service';
+import { BrandListItemDto } from '../../models/brand-list-item-dto';
+
 
 @Component({
   selector: 'app-brands-list',

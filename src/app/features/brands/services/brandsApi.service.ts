@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { BrandListItemDto } from '../models/brand-list-item-dto';
 import { PostBrandRequest } from '../models/post-brand-request';
 import { PostBrandResponse } from '../models/post-brand-response';
+import { PutBrandRequest } from '../models/put-brand-request';
+import { PutBrandResponse } from '../models/put-brand-response';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +22,13 @@ export class BrandsApiService {
   postBrand(brand: PostBrandRequest): Observable<PostBrandResponse> {
     return this.http.post<PostBrandResponse>(
       'http://localhost:3000/brands',
+      brand
+    );
+  }
+
+  putBrand(id: number, brand: PutBrandRequest): Observable<PutBrandResponse> {
+    return this.http.put<PutBrandResponse>(
+      `http://localhost:3000/brands/${id}`,
       brand
     );
   }

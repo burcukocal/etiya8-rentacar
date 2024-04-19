@@ -1,8 +1,9 @@
+import { BrandsListComponent } from './../../features/brands/components/brands-list/brands-list.component';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ModelsListComponent } from '../../features/models/components/models-list/models-list.component';
-import { BrandsListComponent } from '../../features/brands/components/brands-list/brands-list/brands-list.component';
+
 import { MainLayoutComponent } from '../../shared/layouts/main-layout/main-layout.component';
 import { FormsModule } from '@angular/forms';
 
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MainLayoutComponent,
     ModelsListComponent,
-    BrandsListComponent,
+    BrandsListComponent
+
   ], //MainLayoutComponent pathler ile layout sağlanırsa importuna gerek kalmaz sildik.
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
