@@ -14,7 +14,7 @@ import { ModelsApiService } from '../../services/modelsApi.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModelDetailsComponent {
-  @Input()  modelId!: number;
+  @Input()  id!: number;
   modelDetails !: ModelDetailsDto;
 
   constructor(
@@ -26,9 +26,9 @@ export class ModelDetailsComponent {
     this.getModelDetails();
   }
   getModelDetails() {
-    this.modelsApiService.getById(this.modelId).subscribe({
+    this.modelsApiService.getById(this.id).subscribe({
       next: (modelDetails) => {
-        modelDetails = this.modelDetails;
+        this.modelDetails = modelDetails;
       },
       complete: () => {
         this.change.markForCheck();

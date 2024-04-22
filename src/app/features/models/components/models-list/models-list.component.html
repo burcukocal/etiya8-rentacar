@@ -1,53 +1,30 @@
 <!-- track $index yerine track item.id yazabiliriz -->
-
-<ul>
-  <li *ngFor="let item of list">
-    <a routerLink="/home/models/{{item.id}}">{{ item.name }}</a>
-  </li>
-</ul>
-
-
-
 <section class="mt-5">
-  <table class="table w-75 border">
-    <thead>
-      <tr>
-        <th>Model Name</th>
-        <th>Model Year</th>
-        <th>Daily Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let item of list">
-        <tr>
-          <td routerLink="/home/models/{{item.id}}">{{ item.name }}</td>
-          <td>{{ item.modelYear }}</td>
-          <td>{{ item.dailyPrice }}</td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of list">
+      <a class="text-decoration-none fs-5 text-dark" routerLink="/home/models/{{ item.id }}">{{ item.name }}</a>
+    </li>
+  </ul>
 
-  <button type="button" (click)="onPageChange(pageIndex -1)" [disabled]="pageIndex ===0">Prev</button>
-  {{ pageIndex +1 }}
-  <button type="button"(click)="onPageChange(pageIndex + 1)" [disabled]="!hasPageNext">Next</button>
-
-  <!-- <nav class="">
-    <ul class="pagination">
-      <li class="page-item disabled">
-        <a class="page-link">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item active" aria-current="page">
-        <a class="page-link" href="#">2</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
-</section> -->
+  <div class="mt-2">
+    <button
+      class="btn btn-outline-primary"
+      type="button"
+      (click)="onPageChange(pageIndex - 1)"
+      [disabled]="pageIndex === 0"
+    >
+      Prev
+    </button>
+    <span class="btn btn-outline-primary disabled" >{{ pageIndex + 1 }}</span>
+    <button
+      class="btn btn-outline-primary"
+      type="button"
+      (click)="onPageChange(pageIndex + 1)"
+      [disabled]="!hasPageNext"
+    >
+      Next
+    </button>
+  </div>
 
   <!-- <ul class="list-group text-center">
       <ng-container *ngFor="let item of list">

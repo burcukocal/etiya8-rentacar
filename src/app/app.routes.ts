@@ -8,6 +8,8 @@ import { CreateBrandPageComponent } from './routers/create-brand-page/create-bra
 import { CreateModelPageComponent } from './routers/create-model-page/create-model-page.component';
 import { UpdateModelPageComponent } from './routers/update-model-page/update-model-page.component';
 import { ModelDetailsPageComponent } from './routers/model-details-page/model-details-page.component';
+import { CustomerPageComponent } from './routers/customer-page/customer-page.component';
+import { RentalPageComponent } from './routers/rental-page/rental-page.component';
 
 export const routes: Routes = [
   {
@@ -32,6 +34,14 @@ export const routes: Routes = [
       {
         path: 'brands',
         component: HomePageComponent
+      },
+      {
+        path: "customers",
+        component: CustomerPageComponent
+      },
+      {
+        path:"rentals",
+        component: RentalPageComponent
       }
     ]
   },
