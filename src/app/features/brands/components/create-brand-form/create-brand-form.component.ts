@@ -20,7 +20,6 @@ import { Router, RouterModule } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateBrandFormComponent {
-  showErrorMessage: boolean = false;
   form: FormGroup = this.fb.group({
     // Form Controls name isminde bir from control var
     name: [
