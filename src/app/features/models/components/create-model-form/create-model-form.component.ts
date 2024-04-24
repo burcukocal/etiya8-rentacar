@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModelsApiService } from '../../services/modelsApi.service';
 import { PostModelRequest } from '../../models/post-model-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
@@ -20,7 +20,11 @@ import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-me
 export class CreateModelFormComponent {
   form: FormGroup = this.fb.group({
     brandId: [],
-    name: [],
+    name: ['',
+    [Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20)
+    ],],
     modelYear: [],
     imageUrl: [],
     dailyPrice: [],

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { ValidationErrors } from '@angular/forms';
 
 @Pipe({
   name: 'controlErrorMessage',
@@ -7,30 +7,30 @@ import { AbstractControl, ValidationErrors } from '@angular/forms';
 })
 export class ControlErrorMessagePipe implements PipeTransform {
 
-  transform(control: AbstractControl | null): string | null {
-    if (!control || !control.errors) {
-      return null;
-    }
 
-    const errors: ValidationErrors = control.errors;
+  transform(control: ValidationErrors | null | undefined, ...args: unknown[]): string | unknown  {
 
-    if (errors['required']) {
+    if (control?.['required']) {
       return 'Bu alan zorunludur.';
     }
 
-    if (errors['customError']) {
+    if (control?.['customError']) {
       return 'Bir hata meydana geldi.';
     }
 
-    if (errors['pattern']) {
+    if (control?.['pattern']) {
       return 'Geçersiz formatta.';
     }
 
-    if(errors['minLength']) {
-      return 'Minimum 3 karakter girebilirsiniz.';
+    if(!control?.['minLength']) {
+      return 'Minimum 3 karakter olmalıdır.';
     }
 
-      return null;
+    if(!control?.['maxLength']) {
+      return 'Maksimum 20 karakter olmalıdır.';
+    }
+
+      return "Invalid";
   }
 
 

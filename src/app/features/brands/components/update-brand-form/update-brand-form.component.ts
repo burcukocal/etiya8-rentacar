@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrandsApiService } from '../../services/brandsApi.service';
 import { PutBrandRequest } from '../../models/put-brand-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
@@ -16,7 +16,14 @@ import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-me
 export class UpdateBrandFormComponent {
   form: FormGroup = this.fb.group({
     id: [],
-    name: [],
+    name: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)
+      ],
+    ],
   });
 
   constructor(

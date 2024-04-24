@@ -18,15 +18,16 @@ import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-me
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateBrandFormComponent {
+  showErrorMessage: boolean = false;
   form: FormGroup = this.fb.group({
     // Form Controls name isminde bir from control var
     name: [
       '',
-      [Validators.required,
+      [
+        Validators.required,
         Validators.minLength(3),
         Validators.maxLength(20)
       ],
-
     ],
   });
 
@@ -53,7 +54,7 @@ export class CreateBrandFormComponent {
     });
   }
 
-  onFormSumbit() {
+  onFormSubmit() {
     if (this.form.invalid) {
       console.error('Form is invalid');
       return;
