@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ModelsApiService } from '../../services/modelsApi.service';
 import { PostModelRequest } from '../../models/post-model-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-create-model-form',
@@ -11,7 +12,8 @@ import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-me
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ControlErrorMessagePipe
+    ControlErrorMessagePipe,
+    RouterModule
   ],
   templateUrl: './create-model-form.component.html',
   styleUrl: './create-model-form.component.scss',
@@ -33,6 +35,7 @@ export class CreateModelFormComponent {
   constructor(
     private fb: FormBuilder,
     private modelsApiService: ModelsApiService,
+    private router: Router
   ) {}
 
 
@@ -55,6 +58,7 @@ export class CreateModelFormComponent {
       complete: () => {
         console.log('Model created successfully');
         this.form.reset();
+        this.router.navigate(['/home/models']);
       },
     });
   }

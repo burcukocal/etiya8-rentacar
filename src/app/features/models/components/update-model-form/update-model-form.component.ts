@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ModelsApiService } from '../../services/modelsApi.service';
 import { PutModelRequest } from '../../models/put-model-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-model-form',
@@ -34,7 +35,8 @@ export class UpdateModelFormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private modelsApiService: ModelsApiService
+    private modelsApiService: ModelsApiService,
+    private router: Router
   ) {}
 
   updateModel() {
@@ -56,6 +58,7 @@ export class UpdateModelFormComponent {
       complete: () => {
         console.log('Model updated successfully');
         this.form.reset();
+        this.router.navigate(['/home/models'])
       },
     });
   }

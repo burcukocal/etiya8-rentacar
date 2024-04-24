@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BrandsApiService } from '../../services/brandsApi.service';
 import { PostBrandRequest } from '../../models/post-brand-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-create-brand-form',
@@ -11,7 +12,8 @@ import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-me
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ControlErrorMessagePipe
+    ControlErrorMessagePipe,
+    RouterModule
   ],
   templateUrl: './create-brand-form.component.html',
   styleUrl: './create-brand-form.component.scss',
@@ -33,7 +35,8 @@ export class CreateBrandFormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private brandsApiService: BrandsApiService
+    private brandsApiService: BrandsApiService,
+    private router: Router
   ) {}
 
   createBrand() {
@@ -50,6 +53,7 @@ export class CreateBrandFormComponent {
       complete: () => {
         console.log('Brand created successfully');
         this.form.reset();
+        this.router.navigate(['/home/brands']);
       },
     });
   }

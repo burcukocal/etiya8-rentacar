@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BrandsApiService } from '../../services/brandsApi.service';
 import { PutBrandRequest } from '../../models/put-brand-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-brand-form',
@@ -28,7 +29,8 @@ export class UpdateBrandFormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private brandsApiService: BrandsApiService
+    private brandsApiService: BrandsApiService,
+    private router: Router
   ) {}
 
   updateBrand() {
@@ -46,6 +48,7 @@ export class UpdateBrandFormComponent {
       complete: () => {
         console.log('Brand updated successfully');
         this.form.reset();
+        this.router.navigate(['/home/brands'])
       },
     });
   }
