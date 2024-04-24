@@ -3,13 +3,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ModelsApiService } from '../../services/modelsApi.service';
 import { PutModelRequest } from '../../models/put-model-request';
+import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
 
 @Component({
   selector: 'app-update-model-form',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ControlErrorMessagePipe
   ],
   templateUrl: './update-model-form.component.html',
   styleUrl: './update-model-form.component.scss',
@@ -53,7 +55,7 @@ export class UpdateModelFormComponent {
     });
   }
 
-  onFormSumbit() {
+  onFormSubmit() {
     if (this.form.invalid) {
       console.error('Form is invalid');
       return;

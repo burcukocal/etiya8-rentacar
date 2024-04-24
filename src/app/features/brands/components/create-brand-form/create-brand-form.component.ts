@@ -3,13 +3,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrandsApiService } from '../../services/brandsApi.service';
 import { PostBrandRequest } from '../../models/post-brand-request';
+import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
 
 @Component({
   selector: 'app-create-brand-form',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ControlErrorMessagePipe
   ],
   templateUrl: './create-brand-form.component.html',
   styleUrl: './create-brand-form.component.scss',
@@ -19,8 +21,12 @@ export class CreateBrandFormComponent {
   form: FormGroup = this.fb.group({
     // Form Controls name isminde bir from control var
     name: [
-      '', // [0]: başlangıç değeri
-      [Validators.required], // [1]: validasyonlar
+      '',
+      [Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)
+      ],
+
     ],
   });
 

@@ -3,11 +3,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BrandsApiService } from '../../services/brandsApi.service';
 import { PutBrandRequest } from '../../models/put-brand-request';
+import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
 
 @Component({
   selector: 'app-update-brand-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ControlErrorMessagePipe],
   templateUrl: './update-brand-form.component.html',
   styleUrl: './update-brand-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,7 +43,7 @@ export class UpdateBrandFormComponent {
     });
   }
 
-  onFormSumbit() {
+  onFormSubmit() {
     if (this.form.invalid) {
       console.error('Form is invalid');
       return;
