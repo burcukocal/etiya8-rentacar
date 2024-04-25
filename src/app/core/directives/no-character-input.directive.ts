@@ -9,7 +9,7 @@ export class NoCharacterInputDirective {
 
   @HostListener('input', ['$event']) onInputChange(event:any) {
     const initalValue = event.target.value;
-    event.target.value = initalValue.replace(/[^a-zA-Z]/g, '');
+    event.target.value = initalValue.replace(/[^\D]*/g, '');
     if (initalValue !== event.target.value) {
       event.stopPropagation();
     }
