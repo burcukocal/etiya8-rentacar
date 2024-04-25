@@ -13,11 +13,11 @@ export class ControlErrorMessagePipe implements PipeTransform {
       return '';
     }
 
-    return  control['required'] ? 'Bu alan zorunludur.' :
-            control['customError'] ? 'Bir hata meydana geldi.' :
+    return  control['required'] ? 'This field is required.' :
+            control['customError'] ? 'An error occured.' :
             control['pattern'] ? 'Geçersiz formatta.' :
-            control['minlength'] ? 'Minimum 3 karakter olmalıdır.' :
-            control['maxlength'] ? 'Maksimum 20 karakter olmalıdır.' : 'Invalid';
+            control['minlength'] ? `This field must be at least ${control['minlength'].requiredLength} characters but it has ${control['minlength'].actualLength} characters.` :
+            control['maxlength'] ? 'Maksimum 20 karakter olmalıdır.' : 'Invalid field value';
 }
 
     // if (control?.['required']) {

@@ -26,6 +26,7 @@ export class CreateBrandFormComponent {
       '',
       [
         Validators.required,
+        Validators.pattern,
         Validators.minLength(3),
         Validators.maxLength(20)
       ],
@@ -60,6 +61,7 @@ export class CreateBrandFormComponent {
   onFormSubmit() {
     if (this.form.invalid) {
       console.error('Form is invalid');
+      this.form.markAllAsTouched();
       return;
     }
     this.createBrand();
