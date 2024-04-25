@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MainLayoutComponent,
     ModelsListComponent,
-    BrandsListComponent
+    BrandsListComponent,
 
   ], //MainLayoutComponent pathler ile layout sağlanırsa importuna gerek kalmaz sildik.
   templateUrl: './home-page.component.html',

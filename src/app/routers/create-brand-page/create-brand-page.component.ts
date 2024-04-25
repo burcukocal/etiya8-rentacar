@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CreateBrandFormComponent } from '../../features/brands/components/create-brand-form/create-brand-form.component';
+import { WelcomeDirective } from '../../core/directives/welcome.directive';
 
 
 @Component({
@@ -9,6 +10,7 @@ import { CreateBrandFormComponent } from '../../features/brands/components/creat
   imports: [
     CommonModule,
     CreateBrandFormComponent,
+    WelcomeDirective
   ],
   templateUrl: './create-brand-page.component.html',
   styleUrl: './create-brand-page.component.scss',
