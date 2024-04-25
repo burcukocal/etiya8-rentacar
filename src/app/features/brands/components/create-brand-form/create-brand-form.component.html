@@ -15,4 +15,6 @@
     <span class="text-danger">{{ form.get('name')!.errors | controlErrorMessage }}</span>
   </div>
 
+  <small *appIfNot="form.get('name')!.invalid" class="text-info" >This field valid.</small>
+
 </form>
