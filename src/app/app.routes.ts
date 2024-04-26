@@ -12,6 +12,7 @@ import { CustomerPageComponent } from './routers/customer-page/customer-page.com
 import { RentalPageComponent } from './routers/rental-page/rental-page.component';
 import { securedRouteGuard } from './shared/guards/secured-route.guard';
 import { logableRouteGuard } from './shared/guards/logable-route.guard';
+import { confirmationRouteGuard } from './shared/guards/confirmation-route.guard';
 
 export const routes: Routes = [
   {
@@ -57,7 +58,8 @@ export const routes: Routes = [
     canActivate: [securedRouteGuard, logableRouteGuard], //secured-routeGuard
     data: {
       requiredUserRole: 'admin'
-    }
+    },
+    canDeactivate: [confirmationRouteGuard],
   },
   {
     path:'brands/update',
