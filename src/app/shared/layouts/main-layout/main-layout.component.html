@@ -1,6 +1,13 @@
 <div class="main-container">
   <app-navbar></app-navbar>
 
+  <div id="spinner" class="">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+
   <!-- <ng-content></ng-content> component ile yapmayacaksak buna da gerek yok -->
   <div class="layout-container">
     <router-outlet></router-outlet> <!-- bununla app.routes ile ekleme yaptı pathlerle -->

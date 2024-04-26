@@ -7,6 +7,7 @@ import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-me
 import { Router, RouterModule } from '@angular/router';
 import { IfNotDirective } from '../../../../core/directives/if-not.directive';
 import { NoCharacterInputDirective } from '../../../../core/directives/no-character-input.directive';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-brand-form',
@@ -23,7 +24,7 @@ import { NoCharacterInputDirective } from '../../../../core/directives/no-charac
   styleUrl: './create-brand-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CreateBrandFormComponent {
+export class CreateBrandFormComponent{
   form: FormGroup = this.fb.group({
     // Form Controls name isminde bir from control var
     name: [
@@ -40,7 +41,8 @@ export class CreateBrandFormComponent {
   constructor(
     private fb: FormBuilder,
     private brandsApiService: BrandsApiService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   createBrand() {
@@ -57,7 +59,7 @@ export class CreateBrandFormComponent {
       complete: () => {
         console.log('Brand created successfully');
         this.form.reset();
-        this.router.navigate(['/home/brands']);
+        this.toastr.success('Brand created successfully');
       },
     });
   }
@@ -69,7 +71,6 @@ export class CreateBrandFormComponent {
       return;
     }
     this.createBrand();
+    this.router.navigate(['/home/brands']);
   }
-
-
 }

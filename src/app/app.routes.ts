@@ -45,6 +45,11 @@ export const routes: Routes = [
       {
         path:"rentals",
         component: RentalPageComponent
+      },
+      {
+        path:'createbrand',
+        component: CreateBrandPageComponent,
+        canDeactivate : [confirmationRouteGuard]
       }
     ]
   },
@@ -59,7 +64,7 @@ export const routes: Routes = [
     data: {
       requiredUserRole: 'admin'
     },
-    canDeactivate: [confirmationRouteGuard],
+
   },
   {
     path:'brands/update',
